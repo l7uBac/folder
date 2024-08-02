@@ -1,8 +1,8 @@
 name = 'Дмитрий'
 print('Name: ' + (name))
 age = 36
-print('Age: ' + (str(age)))
-new_age = age + 1
-print('new_age: ' + (str(new_age)))
-is_student = (new_age > age)
+print('age: ' + (str(age)))
+age = age + 1
+print('New age: ' + (str(age)))
+is_student = (age >= age)
 print('Is student: ' + str((is_student)))
