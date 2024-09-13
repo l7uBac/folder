@@ -61,7 +61,6 @@ class House:
 
     def __radd__(self, value):
         return self.__add__(value)
-        
     def __iadd__(self, value):
         return self.__add__(value)
 
