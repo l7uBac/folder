@@ -1,31 +1,39 @@
 
 class Horse:
-    x_distance = 0
-    sound = 'Frrr'
+
+    def __init__(self):
+        self.x_distance = 0
+        self.sound = 'Frrr'
 
     def run(self, dx):
         self.x_distance += dx
-        return self.x_distance
+
 
 class Eagle:
-    y_distance = 0
-    sound = 'I train, eat, sleep, and repeat'
+
+    def __init__(self):
+        self.y_distance = 0
+        self.sound = 'I train, eat, sleep, and repeat'
 
     def fly(self, dy):
         self.y_distance += dy
-        return self.y_distance
+
 
 class Pegasus(Horse, Eagle):
 
+    def __init__(self):
+        super().__init__()
+
+
     def move(self, dx, dy):
-        self.run(dx)
-        self.fly(dy)
+        super().run(dx)
+        super().fly(dy)
 
     def get_pos(self):
-        return (self.x_distance, self.y_distance) # возвращает текущее положение пегаса в виде кортежа - (x_distance, y_distance) в том же порядке.
+        return (self.x_distance, self.y_distance)
 
-    def voice(self): #- который печатает значение унаследованного атрибута sound.
-        super().sound()
+    def voice(self):
+        print(self.sound)
 
 p1 = Pegasus()
 
