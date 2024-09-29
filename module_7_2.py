@@ -8,10 +8,11 @@ def custom_write(file_name, strings):
         file.write(string +'\n')
         str_num +=1
         key = (str_num, str_start_bytes)
+        strings_positions[key] = string
         str_start_bytes = file.tell()
-        string_position = {key: string}
-        return strings_positions
     file.close()
+    return strings_positions
+
 
 info = [
     'Text for tell.',
