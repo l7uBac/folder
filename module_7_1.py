@@ -28,7 +28,7 @@ class Shop:
             if content.find(i.name) == -1:
                 file.write(f'{i} \n')
             else:
-                f'Продукт {i.name} уже есть в магазине'
+                print(f'Продукт {i.name} уже есть в магазине')
         file.close()
 
 s1 = Shop()
