@@ -18,21 +18,23 @@ class WordsFinder:
         return all_words
 
     def find(self, word):
-        for name, words in self.get_all_words().items():
-            if word in words:
-                index = words.index(word.lower())
+        places = {}
+        for key, value in self.get_all_words().items():
+            if word.lower() in value:
+                places[key] = value.index(word.lower()) + 1
             else:
                 print('Слово не найдено')
-        return {name: index +1}
+        return places
 
 
     def count(self, word):
-        for name, words in self.get_all_words().items():
-            if word in words:
-                index = words.count(word.lower())
+        quantity = {}
+        for key, value in self.get_all_words().items():
+            if word.lower() in value:
+                quantity[key] = value.count(word.lower())
             else:
                 print('Слово не найдено')
-        return {name: index}
+        return quantity
 
 
 
