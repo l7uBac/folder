@@ -1,3 +1,5 @@
+import time
+
 class User:
 
     def __init__(self, nickname, password, age):
@@ -65,12 +67,23 @@ class UrTube:
         return list_video
 
     def watch_video(self, title):
-        for user in self.users:
-            if self.current_user == user:
-                if self.adult_mode == True:
+        if User not in self.users:
+            print("Войдите в аккаунт, чтобы смотреть видео")
+
+        for title in self.videos:
+            if video.adult_mode == True:
+                if self.current_user.age >= 18:
+                    while video.time_now != video.durathion:
+                        video.time_now +=1
+                        print(video.time_now)
+                        time.sleep(1)
+                else:
                     print("Вам нет 18 лет, пожалуйста покиньте страницу")
-            else:
-                print("Войдите в аккаунт, чтобы смотреть видео")
+
+
+
+
+
 
 
 ur = UrTube()
@@ -89,11 +102,11 @@ ur.watch_video('Для чего девушкам парень программи
 ur.register('vasya_pupkin', 'lolkekcheburek', 13)
 ur.watch_video('Для чего девушкам парень программист?')
 ur.register('urban_pythonist', 'iScX4vIJClb9YQavjAgF', 25)
-#ur.watch_video('Для чего девушкам парень программист?')
+ur.watch_video('Для чего девушкам парень программист?')
 
 # Проверка входа в другой аккаунт
-#ur.register('vasya_pupkin', 'F8098FM8fjm9jmi', 55)
+ur.register('vasya_pupkin', 'F8098FM8fjm9jmi', 55)
 print(ur.current_user)
 
 # Попытка воспроизведения несуществующего видео
-#ur.watch_video('Лучший язык программирования 2024 года!')
+ur.watch_video('Лучший язык программирования 2024 года!')
