@@ -67,20 +67,22 @@ class UrTube:
         return list_video
 
     def watch_video(self, title):
-        if self.current_user:
-            return f"Войдите в аккаунт, чтобы смотреть видео"
-
+        if not self.current_user:
+            print("Войдите в аккаунт, чтобы смотреть видео")
+            return
         for video in self.videos:
-            for title in video.title:
-                if video.adult_mode and self.current_user.age >= 18:
-                    while video.time_now < video.duration:
-                        video.time_now +=1
-                        print(video.time_now)
-                        time.sleep(1)
-                        
-                else:
-                    print("Вам нет 18 лет, пожалуйста покиньте страницу")
-                    return
+            if title == video.title:
+                if video.adult_mode:
+                    if self.current_user.age >= 18:
+                        while video.time_now < video.duration:
+                            video.time_now +=1
+                            print(video.time_now, end=' ')
+                            time.sleep(1)
+                        print('Конец видео')
+
+                    else:
+                        print("Вам нет 18 лет, пожалуйста покиньте страницу")
+                        return
 
 
 
