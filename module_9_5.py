@@ -1,7 +1,7 @@
 class StepValueError(ValueError):
     pass
 
-#class Iterator:
+class Iterator:
     def __init__(self, start, stop, step=1):
         self.start = start
         self.stop = stop
@@ -21,8 +21,9 @@ class StepValueError(ValueError):
         if self.step < 0:
             if self.pointer < self.stop:
                 raise StopIteration
+        res = self.pointer
         self.pointer += self.step
-        return self.pointer
+        return res
 
 try:
     iter1 = Iterator(100, 200, 0)
@@ -39,13 +40,13 @@ iter5 = Iterator(10, 1)
 
 for i in iter2:
     print(i, end=' ')
-    print()
+print()
 for i in iter3:
     print(i, end=' ')
-    print()
+print()
 for i in iter4:
     print(i, end=' ')
-    print()
+print()
 for i in iter5:
     print(i, end=' ')
-    print()
+print()
