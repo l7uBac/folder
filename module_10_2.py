@@ -5,9 +5,10 @@ class Knight(Thread):
     unit = 100
 
     def __init__(self, name, power):
+        super().__init__()
         self.name = name
         self.power = power
-        super().__init__()
+
 
     def run(self):
         print(f"{self.name}, на нас напали!")
