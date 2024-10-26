@@ -25,12 +25,9 @@ first_knight = Knight('Sir Lancelot', 10)
 second_knight = Knight("Sir Galahad", 20)
 
 
-the_1 = Knight('Sir Lancelot', 10)
-the_2 = Knight("Sir Galahad", 20)
+first_knight.start()
+second_knight.start()
 
-the_1.start()
-the_2.start()
-
-the_1.join()
-the_2.join()
+first_knight.join()
+second_knight.join()
 print("Все битвы закончились!")
