@@ -2,20 +2,21 @@ from random import randint
 from time import sleep
 import threading
 
-class Bank(threading.Thread):
-    lock = threading.Lock()
-    balance = 0
+class Bank():
+
 
     def __init__(self):
         super().__init__()
+        self.lock = threading.Lock()
+        self.balance = 0
 
     def deposit(self):
         for i in range(100):
-            if self.lock.locked() and self.balance >= 500:
-                self.lock.release()
             n = randint(50, 500)
             self.balance += n
             print(f'Пополнение: {n}. Баланс: {self.balance}.')
+            if self.lock.locked() and self.balance >= 500:
+                self.lock.release()
             sleep(0.001)
 
     def take(self):
