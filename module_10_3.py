@@ -2,7 +2,7 @@ from random import randint
 from time import sleep
 import threading
 
-class Bank():
+class Bank:
 
 
     def __init__(self):
@@ -26,7 +26,7 @@ class Bank():
             if m <= self.balance:
                 self.balance -= m
                 print(f"Снятие: {m}. Баланс: {self.balance}")
-            if m > self.balance:
+            else:
                 print('Запрос отклонён, недостаточно средств')
                 self.lock.acquire()
             sleep(0.001)
