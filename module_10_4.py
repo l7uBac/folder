@@ -30,39 +30,30 @@ class Cafe:
 
     def guest_arrival(self, *guests):
         for guest in guests:
-            flag = False
             for table in self.tables:
                 if table.guest is None:
                     print(f'{guest.name} сел(-а) за стол номер {table.number}.')
                     guest.start()
-                    guest.join()
                     table.guest = guest
-                    flag = True
                     break
-            if not flag:
+            else:
                 print(f'{guest.name} в очереди.')
                 self.queue.put(guest)
 
     def discuss_guests(self):
-        
+        while (not self.queue.empty() or table.guest is not None for table in self.tables):
+            for table in self.tables:
+                if table.guest is not None:
+                    if not table.guest.is_alive():
+                        print(f'{table.guest.name} покушал(-а) и ушёл(ушла)')
+                        print(f'Стол номер {table.number} свободен.')
+                        table.guest = None
+                        if not self.queue.empty() and table.guest is None:
+                            table.guest = self.queue.get()
+                            print(f'{table.guest.name} вышел(-ла) из очереди и сел(-а) за стол номер {table.number}.')
+                            table.guest.start()
 
-
-
-
-
-
-
-            
-
-#
-#     #
-#     #
-#     # def discuss_guests(self):
-#     #     while not empty.quele():
-#
-#
-#
-# # Создание столов
+# Создание столов
 tables = [Table(number) for number in range(1, 6)]
 
 # Имена гостей
@@ -77,4 +68,4 @@ cafe = Cafe(*tables)
 # Приём гостей
 cafe.guest_arrival(*guests)
 # Обслуживание гостей
-# #cafe.discuss_guests()
+cafe.discuss_guests()
