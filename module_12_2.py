@@ -1,7 +1,7 @@
 from runner import Runner
 from runner import Tournament
 from unittest import TestCase
-from pprint import pprint
+
 
 class TournamentTest(TestCase):
 
