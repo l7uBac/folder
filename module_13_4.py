@@ -46,8 +46,6 @@ async def send_calories(message, state):
 async  def all_massages(message):
     await message.answer(f'Введите команду /start, чтобы начать общение.')
 
-# для мужчин: (10 x вес (кг) + 6.25 x рост (см) – 5 x возраст (г) + 5) x A
-# A = 1,375.
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
