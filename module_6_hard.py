@@ -12,9 +12,14 @@ class Figure():
         return self.__color
 
     def __is_valid_color(self, r, g, b):
+        # for i in (r, g, b):
+        #     if 0 <= i <= 255 and isinstance(i, int):
+        #         return True
+        # return False
         range = 0<=r<=255 and 0<=g<=255 and 0<=b<=255
         type = isinstance(r, int) and isinstance(g, int) and isinstance(b, int)
         return range and type
+
 
     def set_color(self, r, g, b):
         if self.__is_valid_color(r, g, b):
@@ -55,9 +60,9 @@ class Triangle(Figure):
     sides_count = 3
 
     def get_square(self):
-        #a, b, c == self.__sides
+        # #a, b, c == self.get_sides()
         p = 0.5 * self.__len__()
-        return (p * (p - self.__sides[0]) * (p - self.__sides[1]) * (p - self.__sides[2])) ** 0.5 #(p * (p - a) * (p - b) * (p - c)) ** 0.5
+        return (p * (p - self.get_sides[0]) * (p - self.get_sides[1]) * (p - self.get_sides[2])) ** 0.5 #(p * (p - a) * (p - b) * (p - c)) ** 0.5
 
 class Cube(Figure):
     sides_count = 12
