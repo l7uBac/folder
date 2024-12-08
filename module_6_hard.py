@@ -16,9 +16,9 @@ class Figure():
 
     def __is_valid_color(self, r, g, b):
         for i in (r, g, b):
-            if 0 <= i <= 255 and isinstance(i, int):
-                return True
-        return False
+            if not (0 <= i <= 255 and isinstance(i, int)):
+                return False
+        return True
 
     def set_color(self, r, g, b):
         if self.__is_valid_color(r, g, b):
@@ -70,18 +70,21 @@ class Cube(Figure):
 
     def __init__(self, color, *sides, filled = False):
         super().__init__(color, sides, filled = filled)
-        if len(sides) != self.sides_count:
-            self.__sides = [1] * self.sides_count
+        if len(sides) == 1:
+            self.__sides = [*sides] * self.sides_count
         else:
-            self.__sides = [sides] * self.sides_count
+            self.__sides = [1] * self.sides_count
+
+    def get_sides(self):
+        return [*self.__sides]
 
     def get_volume(self):
         a = self.get_sides()
         return a[0] ** 3
 
 
+
 circle1 = Circle((200, 200, 100), 10) # (Цвет, стороны)
-print(circle1.get_color())
 cube1 = Cube((222, 35, 130), 6)
 
 # Проверка на изменение цветов:
@@ -95,21 +98,9 @@ cube1.set_sides(5, 3, 12, 4, 5) # Не изменится
 print(cube1.get_sides())
 circle1.set_sides(15) # Изменится
 print(circle1.get_sides())
-circle1.set_sides(15, 20) # Не изменится
-print(circle1.get_sides())
 
 # Проверка периметра (круга), это и есть длина:
 print(len(circle1))
 
 # Проверка объёма (куба):
 print(cube1.get_volume())
-triangle1 = Triangle((0, 0, 0), 3, 3, 3)
-print(triangle1.get_square())
-triangle1.set_sides(15, 20) # Не изменится
-print(triangle1.get_sides())
-triangle1.set_sides(15, 20, 10) # Изменится
-print(triangle1.get_sides())
-triangle2 = Triangle((10, 10, 10), 3, 3, 3, 3, 3)
-print(triangle2.get_sides())
-print(triangle1.get_square())
-print(triangle2.get_square())
