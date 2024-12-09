@@ -85,6 +85,7 @@ class Cube(Figure):
 
 
 circle1 = Circle((200, 200, 100), 10) # (Цвет, стороны)
+print(circle1.get_color())
 cube1 = Cube((222, 35, 130), 6)
 
 # Проверка на изменение цветов:
@@ -98,9 +99,21 @@ cube1.set_sides(5, 3, 12, 4, 5) # Не изменится
 print(cube1.get_sides())
 circle1.set_sides(15) # Изменится
 print(circle1.get_sides())
+circle1.set_sides(15, 20) # Не изменится
+print(circle1.get_sides())
 
 # Проверка периметра (круга), это и есть длина:
 print(len(circle1))
 
 # Проверка объёма (куба):
 print(cube1.get_volume())
+triangle1 = Triangle((0, 0, 0), 3, 3, 3)
+print(triangle1.get_square())
+triangle1.set_sides(15, 20) # Не изменится
+print(triangle1.get_sides())
+triangle1.set_sides(15, 20, 10) # Изменится
+print(triangle1.get_sides())
+triangle2 = Triangle((10, 10, 10), 3, 3, 3, 3, 3)
+print(triangle2.get_sides())
+print(triangle1.get_square())
+print(triangle2.get_square())
